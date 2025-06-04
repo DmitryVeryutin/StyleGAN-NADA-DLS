@@ -11,7 +11,7 @@ class DirectionalCLIPLoss(torch.nn.Module):
     Он измеряет сходство между изображением и текстовым описанием по целевому направлению.
     """
 
-    def __init__(self, stylegan_size=1024, global_loss_impact=0, clip_model=clip_model, clip_preprocess=clip_preprocess):
+    def __init__(self, stylegan_size=1024, global_loss_impact=0, clip_model=0, clip_preprocess=0):
         """
         Инициализирует класс CLIPLoss.
 
@@ -90,7 +90,7 @@ class GlobalCLIPLoss(torch.nn.Module):
     Он измеряет сходство между изображением и текстовым описанием.
     """
 
-    def __init__(self, stylegan_size=1024, clip_model=clip_model, clip_preprocess=clip_preprocess):
+    def __init__(self, stylegan_size=1024, clip_model=0, clip_preprocess=0):
         """
         Инициализирует класс CLIPLoss.
 
