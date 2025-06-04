@@ -5,11 +5,11 @@ from tqdm import tqdm
 import torch.nn as nn
 
 class DomainAdapter(nn.Module):
-    def __init__(self, generator=generator, fixed_generator=fixed_generator,
-                 clipglobal=clipglobal, generator_optimizer = generator_optimizer,
-                 clipdirect=clipdirect, pic_batch = 4, pic_sample = 4,
-                 layers_to_train=layers_to_train, num_steps=200, device=device,
-                 text_inputs = text_inputs, start_text_inputs = start_text_inputs):
+    def __init__(self, generator=0, fixed_generator=0,
+                 clipglobal=0, generator_optimizer=0,
+                 clipdirect=0, pic_batch = 4, pic_sample = 4,
+                 layers_to_train=12, num_steps=200, device='cuda',
+                 text_inputs='Nicolas Cage', start_text_inputs='Human'):
 
         super(DomainAdapter, self).__init__()
         self.generator=generator
