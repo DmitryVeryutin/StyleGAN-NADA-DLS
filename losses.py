@@ -1,6 +1,7 @@
 from torch import linalg as LA
 from torchvision import transforms
 import torch
+import torch.nn as nn
 #https://github.com/openai/CLIP
 
 # https://github.com/rinongal/StyleGAN-nada/blob/main/ZSSGAN/criteria/clip_loss.py
