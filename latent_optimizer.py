@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 class LatentOptimizer(nn.Module):
 
-    def __init__(self, fixed_generator=0, pic_size=(1024, 1024), perceptual_loss=perceptual_loss, device='cuda'):
+    def __init__(self, fixed_generator=0, pic_size=(1024, 1024), perceptual_loss=0, device='cuda'):
 
         super(LatentOptimizer, self).__init__()
         self.generator = fixed_generator
