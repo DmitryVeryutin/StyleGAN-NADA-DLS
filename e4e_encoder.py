@@ -13,9 +13,9 @@ import torch.nn as nn
 
 class e4eEncoder(nn.Module):
     # Импортируем необходимые библиотеки
-    def __init__(self, fixed_generator=0, device='cuda'):
+    def __init__(self, net=0, fixed_generator=0, device='cuda'):
         super(e4eEncoder, self).__init__()
-
+        self.net = net
         self.pic_size = (256, 256)
         self.fixed_generator = fixed_generator
         # Определяем преобразования для изображения
@@ -25,19 +25,7 @@ class e4eEncoder(nn.Module):
                 transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])  # Нормализуем значения пикселей
         ])
 
-        # Загружаем предобученную модель pSp
-        model_path = '/content/encoder4editing/e4e_ffhq_encode.pt'  # Путь к весам энкодера /content/encoder4editing
-        ckpt = torch.load(model_path, map_location='cpu')
-        opts = ckpt['opts']
-
-        opts['checkpoint_path'] = model_path
-        opts = Namespace(**opts)
-        self.net = pSp(opts)
-        self.net.eval()
-        self.net.to(device)
-        print('Model successfully loaded!')
-
-        # Определяем функцию для отображения результата рядом с исходным
+    # Определяем функцию для отображения результата рядом с исходным
     def display_alongside_source_image(self, result_image, source_image):
         """Отображает результат рядом с исходным изображением.
 
