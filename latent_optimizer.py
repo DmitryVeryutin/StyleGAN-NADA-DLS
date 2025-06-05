@@ -14,7 +14,6 @@ class LatentOptimizer(nn.Module):
 
         super(LatentOptimizer, self).__init__()
         self.generator = fixed_generator
-        self.fixed_generator = fixed_generator
         self.perceptual_loss = perceptual_loss
         self.transform = transforms.Compose([
                 transforms.Resize(pic_size),  # Изменяем размер изображения до 256x256
