@@ -9,6 +9,7 @@ from utils.common import tensor2im
 import numpy as np
 import gc
 from torchvision.utils import save_image
+import torch.nn as nn
 
 class e4eEncoder(nn.Module):
     # Импортируем необходимые библиотеки
