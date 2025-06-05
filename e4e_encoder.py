@@ -1,6 +1,6 @@
 import torch
 import os
-from models.psp import pSp  # Импортируем модель pSp
+
 from argparse import Namespace
 from torchvision import transforms
 from PIL import Image
