@@ -66,7 +66,7 @@ class e4eEncoder(nn.Module):
             print('Inference took {:.4f} seconds.'.format(toc - tic))
 
         # Отображаем результат инверсии
-        self.display_alongside_source_image(fixed_generator([inv_latent], input_is_latent=True)[0], input_image) #tensor2im(result_image)
+        self.display_alongside_source_image(self.fixed_generator([inv_latent], input_is_latent=True)[0], input_image) #tensor2im(result_image)
     
         gc.collect()
         torch.cuda.empty_cache()
