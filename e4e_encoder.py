@@ -13,7 +13,7 @@ import torch.nn as nn
 
 class e4eEncoder(nn.Module):
     # Импортируем необходимые библиотеки
-    def __init__(self, generator=0, fixed_generator=0, device='cuda'):
+    def __init__(self, device='cuda'):
         super(e4eEncoder, self).__init__()
 
         self.pic_size = (256, 256)
