@@ -5,7 +5,7 @@ from argparse import Namespace
 from torchvision import transforms
 from PIL import Image
 import time  # Модуль для работы со временем
-from utils.common import tensor2im
+#from utils.common import tensor2im
 import numpy as np
 import gc
 from torchvision.utils import save_image
@@ -13,11 +13,11 @@ import torch.nn as nn
 
 class e4eEncoder(nn.Module):
     # Импортируем необходимые библиотеки
-    def __init__(self, device='cuda'):
+    def __init__(self, fixed_generator=0, device='cuda'):
         super(e4eEncoder, self).__init__()
 
         self.pic_size = (256, 256)
-
+        self.fixed_generator = fixed_generator
         # Определяем преобразования для изображения
         self.transform = transforms.Compose([
                 transforms.Resize(self.pic_size),  # Изменяем размер изображения до 256x256
@@ -78,7 +78,7 @@ class e4eEncoder(nn.Module):
             print('Inference took {:.4f} seconds.'.format(toc - tic))
 
         # Отображаем результат инверсии
-        self.display_alongside_source_image(tensor2im(result_image), input_image)
+        self.display_alongside_source_image(fixed_generator([inv_latent], input_is_latent=True)[0], input_image) #tensor2im(result_image)
     
         gc.collect()
         torch.cuda.empty_cache()
