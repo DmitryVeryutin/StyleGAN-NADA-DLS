@@ -172,7 +172,7 @@ class LatentOptimizer(nn.Module):
             losses['noise_reg'].append(noise_loss.item())
             losses['all'].append(loss.item())
                 
-            print("Инверсия в W-пространстве с регуляризацией шумов завершена.")  # Сообщение о завершении процесса
+        print("Инверсия в W-пространстве с регуляризацией шумов завершена.")  # Сообщение о завершении процесса
 
         # Посмотрим на конечный результат
         fig, axs = plt.subplots(1, 2, figsize=(10, 5))
