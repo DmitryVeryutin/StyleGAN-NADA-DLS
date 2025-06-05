@@ -13,7 +13,7 @@ class LatentOptimizer(nn.Module):
     def __init__(self, generator=0, fixed_generator=0, pic_size=(1024, 1024), perceptual_loss=perceptual_loss, device='cuda'):
 
         super(LatentOptimizer, self).__init__()
-        self.generator = generator
+        self.generator = fixed_generator
         self.fixed_generator = fixed_generator
         self.perceptual_loss = perceptual_loss
         self.transform = transforms.Compose([
@@ -119,9 +119,6 @@ class LatentOptimizer(nn.Module):
         mse = torch.nn.MSELoss()
 
         w_plus = True
-
-        
-
         latent_in = latent_mean.detach().clone().unsqueeze(0).repeat(1, 1)
 
         if w_plus:
@@ -155,7 +152,7 @@ class LatentOptimizer(nn.Module):
             noise_strength = latent_std * 0.05 * max(0, 1 - t / 0.75) ** 2
             latent_n = self.latent_noise(latent_in, noise_strength.item())
 
-            generated_img, _ = self.fixed_generator([latent_n], input_is_latent=True, noise=noises)  # Генерация изображения из W-вектора
+            generated_img, _ = self.generator([latent_n], input_is_latent=True, noise=noises)  # Генерация изображения из W-вектора
 
             # Основные потери
             noise_loss = self.noise_regularize(noises)
