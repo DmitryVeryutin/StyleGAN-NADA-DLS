@@ -5,7 +5,7 @@ from argparse import Namespace
 from torchvision import transforms
 from PIL import Image
 import time  # Модуль для работы со временем
-from utils.common import tensor2im
+#from utils.common import tensor2im
 import numpy as np
 import gc
 from torchvision.utils import save_image
@@ -24,6 +24,15 @@ class e4eEncoder(nn.Module):
                 transforms.ToTensor(),
                 transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])  # Нормализуем значения пикселей
         ])
+
+    def tensor2im(self, var):
+    	# var shape: (3, H, W)
+    	var = var.cpu().detach().transpose(0, 2).transpose(0, 1).numpy()
+    	var = ((var + 1) / 2)
+    	var[var < 0] = 0
+    	var[var > 1] = 1
+    	var = var * 255
+    	return Image.fromarray(var.astype('uint8'))
 
     # Определяем функцию для отображения результата рядом с исходным
     def display_alongside_source_image(self, result_image, source_image):
@@ -69,7 +78,7 @@ class e4eEncoder(nn.Module):
             #print(inv_latent.size())
             real_result_image = self.fixed_generator([inv_latent], input_is_latent=True)[0].squeeze(0)
             #print(real_result_image.size())
-            e4e_result = self.display_alongside_source_image(tensor2im(real_result_image), input_image) #tensor2im(result_image)
+            e4e_result = self.display_alongside_source_image(self.tensor2im(real_result_image), input_image) #tensor2im(result_image)
             '''
             print(e4e_result)
             e4e_result.show()
