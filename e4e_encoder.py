@@ -5,7 +5,7 @@ from argparse import Namespace
 from torchvision import transforms
 from PIL import Image
 import time  # Модуль для работы со временем
-#from utils.common import tensor2im
+from utils.common import tensor2im
 import numpy as np
 import gc
 from torchvision.utils import save_image
@@ -61,26 +61,34 @@ class e4eEncoder(nn.Module):
         with torch.no_grad():
             tic = time.time()  # Время начала выполнения
             images, latents = self.run_on_batch(transformed_image.unsqueeze(0), self.net)
-            result_image, inv_latent = images[0], latents[0]  # Извлекаем результат и латентный вектор
+            result_image, inv_latent = images[0], latents[0].unsqueeze(0)  # Извлекаем результат и латентный вектор
             toc = time.time()  # Время окончания выполнения
             print('Inference took {:.4f} seconds.'.format(toc - tic))
 
             # Отображаем результат инверсии
-            self.display_alongside_source_image(self.fixed_generator(inv_latent, input_is_latent=False)[0], input_image) #tensor2im(result_image)
-    
+            #print(inv_latent.size())
+            real_result_image = self.fixed_generator([inv_latent], input_is_latent=True)[0].squeeze(0)
+            #print(real_result_image.size())
+            e4e_result = self.display_alongside_source_image(tensor2im(real_result_image), input_image) #tensor2im(result_image)
+            '''
+            print(e4e_result)
+            e4e_result.show()
+            '''
+            display(e4e_result)
+
         gc.collect()
         torch.cuda.empty_cache()
 
         # Сохранение результатов
-        save_dir = 'optimization_results'
-        filename = "real_image_w+_optimization"
+        save_dir = 'optimization_results_e4e'
+        filename = "real_image_w+_optimization_e4e"
 
         # Проверка, что создана папка для сохранения результатов
         os.makedirs(save_dir, exist_ok=True)
 
         # Save the latents to a .pt file.
         latent_path = os.path.join(save_dir, filename + ".pt")
-    
+
         torch.save(inv_latent, latent_path)
 
         # Save the image to a .png file.
