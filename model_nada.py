@@ -71,7 +71,9 @@ class DomainAdapter(nn.Module):
 
           layer_weights = torch.abs(w_codes - initial_w_codes).mean(dim=-1).mean(dim=0)
           layer_numbers = torch.topk(layer_weights, self.layers_to_train)[1].cpu().numpy()
-
+            
+        else:
+          layer_numbers = self.layer_numbers
         #end of opt layers
 
         # разморозим только нужное нам
