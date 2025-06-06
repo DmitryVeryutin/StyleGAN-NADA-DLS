@@ -188,8 +188,8 @@ class LatentOptimizer(nn.Module):
 
         # Сохранение результатов
 
-        save_dir = 'optimization_results'
-        filename = "real_image_w+_optimization"
+        save_dir = 'optimization_results_lat_opt'
+        filename = "real_image_w+_optimization_lat_opt"
 
         # Проверка, что создана папка для сохранения результатов
         os.makedirs(save_dir, exist_ok=True)
