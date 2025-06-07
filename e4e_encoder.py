@@ -12,7 +12,7 @@ from torchvision.utils import save_image
 import torch.nn as nn
 
 class e4eEncoder(nn.Module):
-    # Импортируем необходимые библиотеки
+    # Инвертирует картинку через е4е и сохраняет картинки и латентные векторы
     def __init__(self, net=0, fixed_generator=0, device='cuda'):
         super(e4eEncoder, self).__init__()
         self.net = net
@@ -26,6 +26,14 @@ class e4eEncoder(nn.Module):
         ])
 
     def tensor2im(self, var):
+        '''
+        Переводит тензор var в PIL image
+        
+        Args:
+            var: Изображение (torch.Tensor)
+        Returns:
+            Изображение (PIL.Image).
+        '''
     	# var shape: (3, H, W)
     	var = var.cpu().detach().transpose(0, 2).transpose(0, 1).numpy()
     	var = ((var + 1) / 2)
@@ -63,7 +71,11 @@ class e4eEncoder(nn.Module):
         return images, latents
 
     def forward(self, input_image):
-
+        """
+        Инвертирует и сохраняет результаты, показывает картинки
+        Args:
+            input_image: Оригинальная картинка (тензор PyTorch)
+        """
         transformed_image = self.transform(input_image)  # Применяем преобразования, определенные ранее
 
         # Запускаем модель и измеряем время выполнения
