@@ -9,7 +9,7 @@ import os
 import matplotlib.pyplot as plt
 
 class LatentOptimizer(nn.Module):
-
+    # оптимизирует латент для инверсии картинки
     def __init__(self, fixed_generator=0, pic_size=(1024, 1024), perceptual_loss=0, device='cuda'):
 
         super(LatentOptimizer, self).__init__()
@@ -23,6 +23,9 @@ class LatentOptimizer(nn.Module):
         self.device=device
 
     def get_lr(self, t, initial_lr, rampdown=0.25, rampup=0.05):
+            """
+            Кастомный скедулер, сначала быстро поднимает шаг обучения, потом долгое время сохраняет его и затем резко снижает
+            """
             lr_ramp = min(1, (1 - t) / rampdown)
             lr_ramp = 0.5 - 0.5 * math.cos(lr_ramp * math.pi)
             lr_ramp = lr_ramp * min(1, t / rampup)
