@@ -36,11 +36,11 @@ class e4eEncoder(nn.Module):
         '''
     	# var shape: (3, H, W)
         var = var.cpu().detach().transpose(0, 2).transpose(0, 1).numpy()
-    	var = ((var + 1) / 2)
-    	var[var < 0] = 0
-    	var[var > 1] = 1
-    	var = var * 255
-    	return Image.fromarray(var.astype('uint8'))
+        var = ((var + 1) / 2)
+        var[var < 0] = 0
+        var[var > 1] = 1
+        var = var * 255
+        return Image.fromarray(var.astype('uint8'))
 
     # Определяем функцию для отображения результата рядом с исходным
     def display_alongside_source_image(self, result_image, source_image):
