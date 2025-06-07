@@ -5,6 +5,9 @@ from tqdm import tqdm
 import torch.nn as nn
 
 class DomainAdapter(nn.Module):
+    """
+    Класс для дообучения генератора
+    """
     def __init__(self, generator=0, fixed_generator=0,
                  clipglobal=0, generator_optimizer=0,
                  clipdirect=0, pic_batch = 4, pic_sample = 4,
@@ -40,13 +43,16 @@ class DomainAdapter(nn.Module):
         self.const_z = torch.randn(self.pic_sample, 512, device=device)
 
     def freeze_all_layers(self):
+        """
+        Замораживает все слои сети
+        """
         # морозим все
         for l in self.all_layers:
           for p in l.parameters():
             p.requires_grad = False
 
     def unfreeze_opt_layers(self):
-        # opt layers
+        # Выбирает наиболее сильно влияющие на латент слои и размораживает их
         if self.layers_to_train < 18:
           sample_z = torch.randn(self.pic_batch, 512, device=self.device) #был батч 8
           initial_w_codes = self.fixed_generator.style(sample_z) #8x512
@@ -82,7 +88,7 @@ class DomainAdapter(nn.Module):
             p.requires_grad = True
 
     def forward(self):
-
+        # Дообучает генератор и выводит промежуточные и итоговые результаты, в качестве метрики - косинусное расстояние в CLIP-пространстве
         for step in tqdm(range(self.num_steps)):
 
             gc.collect()
