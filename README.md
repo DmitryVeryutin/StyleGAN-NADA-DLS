@@ -4,6 +4,12 @@ https://colab.research.google.com/drive/1UUAuVIstGxMJr44uyVV8E8bj7F5TtZyC?usp=sh
 
 Примеры работы:
 - photo -> sketch
+<p float="centered">
+  <img src="img/sketch_hq.jpg" width=98.5% />
+  <img src="img/mona_lisa.jpg" width=98.5% />
+  <img src="img/bears.jpg" width="49%" />
+  <img src="img/1920_car.jpg" width="49%" /> 
+</p>
 - photo -> anime
 - human -> Joker
 - human -> Nicolas Cage
