@@ -136,7 +136,7 @@ class DomainAdapter(nn.Module):
                 print(f"inversion_generated_z/Step [{step}/{self.num_steps}], Global_loss: {self.losses['clipglobal'][-1]}, Direct_loss: {self.losses['clipdirect'][-1]}")  # Вывод текущих потерь
 
                 fig, axs = plt.subplots(1, self.pic_sample, figsize=(16, 32))  # Создание подграфиков для визуализации
-                for i in range(self.pic_batch):
+                for i in range(self.pic_sample):
                   axs[i].imshow((image.cpu().detach()[i].clip(-1,1).permute(1, 2, 0) + 1) / 2)
                   axs[i].axis('off')  # Отключение осей
 
