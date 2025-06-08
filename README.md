@@ -5,6 +5,6 @@ https://colab.research.google.com/drive/1UUAuVIstGxMJr44uyVV8E8bj7F5TtZyC?usp=sh
 Примеры работы:
 - photo -> sketch
 - photo -> anime
-- human -> White Walker
+- human -> Joker
 - human -> Nicolas Cage
 
