@@ -114,6 +114,6 @@ class e4eEncoder(nn.Module):
 
         # Save the image to a .png file.
         image_path = os.path.join(save_dir, filename + ".png")
-        save_image(e4e_result, image_path)
+        e4e_result.save(image_path)
 
         print(f"Результаты успешно сохранены в папку {save_dir} с именем {filename}")
