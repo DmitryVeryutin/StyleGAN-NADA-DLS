@@ -18,7 +18,7 @@ https://colab.research.google.com/drive/1UUAuVIstGxMJr44uyVV8E8bj7F5TtZyC?usp=sh
   <img src="img/Layers_choice.PNG" width=49% />
 </p>
 
-Примеры работы (слева сгенерированная картинка, справа - инвертированное реальное фото, взятое из фотостока, над картинками - использованные промпты):
+Примеры работы (слева адаптация сгенерированной картинки, справа - инвертированного реального фото, взятого из фотостока, над картинками - использованные промпты):
 - photo -> sketch
 <p float="centered">
   <img src="img/Gen_image_adapted_from_Photo_to_Sketch.png" width=49% />
