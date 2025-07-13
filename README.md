@@ -19,12 +19,12 @@ https://colab.research.google.com/drive/1UUAuVIstGxMJr44uyVV8E8bj7F5TtZyC?usp=sh
 </p>
 
 <figure style="float: left; width: 48%; margin-right: 4%; text-align: center;">
-  <img src="img/CLIP_directions.PNG" style="width: 100%;" />
+  <img src="img/CLIP_directions.PNG" style="width: 50%;" />
   <figcaption>Figure 1: CLIP directions</figcaption>
 </figure>
 
 <figure style="float: left; width: 48%; text-align: center;">
-  <img src="img/Layers_choice.PNG" style="width: 100%;" />
+  <img src="img/Layers_choice.PNG" style="width: 50%;" />
   <figcaption>Figure 2: Layers choice</figcaption>
 </figure>
 
