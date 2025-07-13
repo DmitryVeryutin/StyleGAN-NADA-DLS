@@ -18,16 +18,20 @@ https://colab.research.google.com/drive/1UUAuVIstGxMJr44uyVV8E8bj7F5TtZyC?usp=sh
   <img src="img/Layers_choice.PNG" width=49% />
 </p>
 
-<div style="display: flex; justify-content: center; gap: 10px;">
-  <figure style="text-align: center; width: 39%;">
-    <img src="img/CLIP_directions.PNG" style="width: 50%;" />
-    <figcaption>Figure 1: CLIP directions</figcaption>
-  </figure>
+<div style="text-align: center;">
+  <div style="display: inline-block; width: 39%; margin-right: 2%; vertical-align: top;">
+    <figure style="text-align: center;">
+      <img src="img/CLIP_directions.PNG" style="width: 100%;" />
+      <figcaption>Figure 1: CLIP directions</figcaption>
+    </figure>
+  </div>
 
-  <figure style="text-align: center; width: 49%;">
-    <img src="img/Layers_choice.PNG" style="width: 50%;" />
-    <figcaption>Figure 2: Layers choice</figcaption>
-  </figure>
+  <div style="display: inline-block; width: 49%; vertical-align: top;">
+    <figure style="text-align: center;">
+      <img src="img/Layers_choice.PNG" style="width: 100%;" />
+      <figcaption>Figure 2: Layers choice</figcaption>
+    </figure>
+  </div>
 </div>
 
 Примеры работы (слева адаптация сгенерированной картинки, справа - инвертированного реального фото, взятого из фотостока, над картинками - использованные промпты):
