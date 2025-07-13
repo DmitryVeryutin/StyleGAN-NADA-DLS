@@ -18,13 +18,13 @@ https://colab.research.google.com/drive/1UUAuVIstGxMJr44uyVV8E8bj7F5TtZyC?usp=sh
   <img src="img/Layers_choice.PNG" width=49% />
 </p>
 
-<div style="display: flex; justify-content: center; gap: 20px;">
-  <figure style="text-align: center; width: 39%;">
+<div style="display: flex; justify-content: center; gap: 10px;">
+  <figure style="text-align: center; width: 29%;">
     <img src="img/CLIP_directions.PNG" style="width: 100%;" />
     <figcaption>Figure 1: CLIP directions</figcaption>
   </figure>
 
-  <figure style="text-align: center; width: 49%;">
+  <figure style="text-align: center; width: 39%;">
     <img src="img/Layers_choice.PNG" style="width: 100%;" />
     <figcaption>Figure 2: Layers choice</figcaption>
   </figure>
