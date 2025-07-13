@@ -15,6 +15,7 @@ https://colab.research.google.com/drive/1UUAuVIstGxMJr44uyVV8E8bj7F5TtZyC?usp=sh
   <img src="img/CLIP_directions.PNG" width=39% />
 </p>
 - обучение не всех слоев генератора, а только тех, которые наиболее сильно влияют на результирующую картинку, такие слои определяют по значению градиента для их параметров (loss feedback):
+
 <p float="centered">
   <img src="img/Layers_choice.PNG" width=49% />
 </p>
